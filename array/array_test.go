@@ -43,6 +43,23 @@ func TestContainsDuplicate(t *testing.T) {
 	}
 }
 
+func TestMaxProfit(t *testing.T) {
+	var tableTest = []struct {
+		nums []int
+		out  int
+	}{
+		{nums: []int{7, 1, 5, 3, 6, 4}, out: 5},
+		{nums: []int{7, 6, 4, 3, 1}, out: 0},
+	}
+
+	for i, test := range tableTest {
+		res := maxProfit(test.nums)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}
+
 func equalArray(a1, a2 sort.IntSlice) bool {
 	a1.Sort()
 	a2.Sort()

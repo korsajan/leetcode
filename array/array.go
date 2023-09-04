@@ -16,6 +16,23 @@ func twoSum(nums []int, target int) []int {
 	return []int{}
 }
 
+func maxProfit(prices []int) int {
+	var dayProfit = make([][]int, len(prices))
+	for i := 0; i < len(prices); i++ {
+		dayProfit[i] = make([]int, 2)
+	}
+
+	dayProfit[0][0] = -prices[0] // diff price
+	dayProfit[0][1] = 0          // profit
+
+	for i := 1; i < len(prices); i++ {
+		dayProfit[i][0] = max(dayProfit[i-1][0], -prices[i])
+		dayProfit[i][1] = max(dayProfit[i-1][1], dayProfit[i-1][0]+prices[i])
+	}
+	profit := max(dayProfit[len(prices)-1][0], dayProfit[len(prices)-1][1])
+	return profit
+}
+
 func containsDuplicate(nums []int) bool {
 	var filter = make(map[int]struct{})
 	for _, n := range nums {
@@ -25,4 +42,11 @@ func containsDuplicate(nums []int) bool {
 		filter[n] = struct{}{}
 	}
 	return false
+}
+
+func max(i, j int) int {
+	if i > j {
+		return i
+	}
+	return j
 }
