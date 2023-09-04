@@ -44,6 +44,23 @@ func containsDuplicate(nums []int) bool {
 	return false
 }
 
+func productExceptSelf(nums []int) []int {
+	var n = 1
+	var sum = make([]int, len(nums))
+	for i := 0; i < len(nums); i++ {
+		sum[i] = n
+		n *= nums[i]
+	}
+
+	n = 1
+	for i := len(nums) - 1; i >= 0; i-- {
+		sum[i] *= n
+		n *= nums[i]
+	}
+
+	return sum
+}
+
 func max(i, j int) int {
 	if i > j {
 		return i

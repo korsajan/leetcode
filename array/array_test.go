@@ -19,7 +19,7 @@ func TestTwoSum(t *testing.T) {
 
 	for i, test := range tableTest {
 		res := twoSum(test.nums, test.target)
-		if !equalArray(test.out, res) {
+		if !equalArrays(test.out, res) {
 			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
 		}
 	}
@@ -60,7 +60,24 @@ func TestMaxProfit(t *testing.T) {
 	}
 }
 
-func equalArray(a1, a2 sort.IntSlice) bool {
+func TestProductExceptSelf(t *testing.T) {
+	var tableTest = []struct {
+		nums []int
+		out  []int
+	}{
+		{nums: []int{1, 2, 3, 4}, out: []int{24, 12, 8, 6}},
+		{nums: []int{-1, 1, 0, -3, 3}, out: []int{0, 0, 9, 0, 0}},
+	}
+
+	for i, test := range tableTest {
+		res := productExceptSelf(test.nums)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}
+
+func equalArrays(a1, a2 sort.IntSlice) bool {
 	a1.Sort()
 	a2.Sort()
 	return reflect.DeepEqual(a1, a2)
