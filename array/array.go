@@ -67,6 +67,24 @@ const (
 	minInt  = -1 << (intSize - 1)
 )
 
+func maxProduct(nums []int) int {
+	var (
+		currMin = nums[0]
+		currMax = nums[0]
+		result  = nums[0]
+	)
+
+	for _, num := range nums[1:] {
+		a := max(max(num*currMax, num), currMin*num)
+		b := min(min(num, num*currMin), currMax*num)
+		result = max(result, a)
+		currMax = a
+		currMin = b
+	}
+
+	return result
+}
+
 func maxSubArray(nums []int) int {
 
 	if len(nums) == 1 {
@@ -85,6 +103,13 @@ func maxSubArray(nums []int) int {
 
 func max(i, j int) int {
 	if i > j {
+		return i
+	}
+	return j
+}
+
+func min(i, j int) int {
+	if i < j {
 		return i
 	}
 	return j
