@@ -101,6 +101,33 @@ func maxSubArray(nums []int) int {
 	return bestSum
 }
 
+func findMin(nums []int) int {
+	if len(nums) == 0 {
+		return 0
+	}
+	if nums[len(nums)-1] > nums[0] {
+		return nums[0]
+	}
+
+	lo, hi := 0, len(nums)-1
+	for lo < hi {
+		mid := int(uint(lo+hi) >> 1)
+		if nums[mid+1] < nums[mid] {
+			return nums[mid+1]
+		}
+		if nums[mid] < nums[mid-1] {
+			return nums[mid]
+		}
+		if nums[len(nums)-1] > nums[mid] {
+			hi = mid
+		}
+		if nums[len(nums)-1] < nums[mid] {
+			lo = mid + 1
+		}
+	}
+	return nums[lo]
+}
+
 func max(i, j int) int {
 	if i > j {
 		return i

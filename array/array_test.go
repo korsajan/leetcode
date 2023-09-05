@@ -119,6 +119,25 @@ func TestMaxProduct(t *testing.T) {
 	}
 }
 
+func TestFindMin(t *testing.T) {
+	var tableTest = []struct {
+		nums []int
+		out  int
+	}{
+		{nums: []int{3, 4, 5, 1, 2}, out: 1},
+		{nums: []int{4, 5, 6, 7, 0, 1, 2}, out: 0},
+		{nums: []int{11, 13, 15, 17}, out: 11},
+		{nums: []int{3, 0, 1, 2}, out: 0},
+	}
+
+	for i, test := range tableTest {
+		res := findMin(test.nums)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}
+
 func equalArrays(a1, a2 sort.IntSlice) bool {
 	a1.Sort()
 	a2.Sort()
