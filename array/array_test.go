@@ -77,6 +77,26 @@ func TestProductExceptSelf(t *testing.T) {
 	}
 }
 
+func TestMaxSubArray(t *testing.T) {
+	var tableTest = []struct {
+		nums []int
+		out  int
+	}{
+		{nums: []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}, out: 6},
+		{nums: []int{1}, out: 1},
+		{nums: []int{5, 4, -1, 7, 8}, out: 23},
+		{nums: []int{-2, -1}, out: -1},
+		{nums: []int{-3, -2, -2, -3}, out: -2},
+	}
+
+	for i, test := range tableTest {
+		res := maxSubArray(test.nums)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}
+
 func equalArrays(a1, a2 sort.IntSlice) bool {
 	a1.Sort()
 	a2.Sort()

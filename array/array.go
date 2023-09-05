@@ -61,6 +61,28 @@ func productExceptSelf(nums []int) []int {
 	return sum
 }
 
+const (
+	intSize = 32 << (^uint(0) >> 63)
+	maxInt  = 1<<(intSize-1) - 1
+	minInt  = -1 << (intSize - 1)
+)
+
+func maxSubArray(nums []int) int {
+
+	if len(nums) == 1 {
+		return nums[0]
+	}
+	var bestSum, currSum = minInt, 0
+	for _, n := range nums {
+		currSum = max(currSum+n, n)
+		if currSum > bestSum {
+			bestSum = currSum
+		}
+	}
+
+	return bestSum
+}
+
 func max(i, j int) int {
 	if i > j {
 		return i
