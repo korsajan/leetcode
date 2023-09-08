@@ -128,6 +128,32 @@ func findMin(nums []int) int {
 	return nums[lo]
 }
 
+func search(nums []int, target int) int {
+	return searchInRotated(nums, 0, len(nums)-1, target)
+}
+
+func searchInRotated(nums []int, lo, hi, target int) int {
+	if lo > hi {
+		return -1
+	}
+	h := int(uint(hi+lo) >> 1)
+	if nums[h] == target {
+		return h
+	}
+	// check sorted
+	if nums[lo] <= nums[h] {
+		if target >= nums[lo] && target <= nums[h] {
+			return searchInRotated(nums, lo, h-1, target)
+		}
+		return searchInRotated(nums, h+1, hi, target)
+	}
+
+	if target >= nums[h] && target <= nums[hi] {
+		return searchInRotated(nums, h+1, hi, target)
+	}
+	return searchInRotated(nums, lo, h-1, target)
+}
+
 func max(i, j int) int {
 	if i > j {
 		return i

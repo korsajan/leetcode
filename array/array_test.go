@@ -138,6 +138,26 @@ func TestFindMin(t *testing.T) {
 	}
 }
 
+func TestSearch(t *testing.T) {
+	var tableTest = []struct {
+		nums   []int
+		target int
+		out    int
+	}{
+		{nums: []int{4, 5, 6, 7, 0, 1, 2}, target: 0, out: 4},
+		{nums: []int{4, 5, 6, 7, 0, 1, 2}, target: 3, out: -1},
+		{nums: []int{1, 2, 3}, target: 2, out: 1},
+		{nums: []int{1}, target: 0, out: -1},
+	}
+
+	for i, test := range tableTest {
+		res := search(test.nums, test.target)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}
+
 func equalArrays(a1, a2 sort.IntSlice) bool {
 	a1.Sort()
 	a2.Sort()
