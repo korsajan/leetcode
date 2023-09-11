@@ -154,6 +154,24 @@ func searchInRotated(nums []int, lo, hi, target int) int {
 	return searchInRotated(nums, lo, h-1, target)
 }
 
+func maxArea(height []int) int {
+	var sum int
+
+	lo, hi := 0, len(height)-1
+	for lo < hi {
+		w := hi - lo
+		h := min(height[lo], height[hi])
+		sum = max(sum, h*w)
+		if height[lo] < height[hi] {
+			lo++
+		} else {
+			hi--
+		}
+	}
+
+	return sum
+}
+
 func max(i, j int) int {
 	if i > j {
 		return i

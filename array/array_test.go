@@ -158,6 +158,23 @@ func TestSearch(t *testing.T) {
 	}
 }
 
+func TestMaxArea(t *testing.T) {
+	var tableTest = []struct {
+		nums []int
+		out  int
+	}{
+		{nums: []int{1, 8, 6, 2, 5, 4, 8, 3, 7}, out: 49},
+		{nums: []int{1, 1}, out: 1},
+	}
+
+	for i, test := range tableTest {
+		res := maxArea(test.nums)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}
+
 func equalArrays(a1, a2 sort.IntSlice) bool {
 	a1.Sort()
 	a2.Sort()
