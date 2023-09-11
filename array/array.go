@@ -1,5 +1,9 @@
 package array
 
+import (
+	"sort"
+)
+
 func twoSum(nums []int, target int) []int {
 	var kv = make(map[int]int)
 	for i, n := range nums {
@@ -170,6 +174,33 @@ func maxArea(height []int) int {
 	}
 
 	return sum
+}
+
+func threeSum(nums []int) [][]int {
+	var out = make([][]int, 0)
+	sort.Ints(nums)
+
+	for i := 0; i < len(nums); i++ {
+		if i != 0 && nums[i] == nums[i-1] {
+			continue
+		}
+		j := i + 1
+		k := len(nums) - 1
+		for j < k {
+			if nums[i]+nums[j]+nums[k] == 0 {
+				out = append(out, []int{nums[i], nums[j], nums[k]})
+				j++
+				for j < k && nums[j] == nums[j-1] {
+					j++
+				}
+			} else if nums[i]+nums[j]+nums[k] < 0 {
+				j++
+			} else {
+				k--
+			}
+		}
+	}
+	return out
 }
 
 func max(i, j int) int {

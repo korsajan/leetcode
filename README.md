@@ -1,5 +1,5 @@
 # blind 75 leetcode list
-- [ ] [Array](./array)
+- [x] [Array](./array)
 - [ ] [Binary](./binary)
 - [ ] [Dynamic Programming](./dp)
 - [ ] [Graph](./graph)
