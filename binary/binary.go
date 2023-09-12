@@ -18,3 +18,12 @@ func countBits(n int) []int {
 	}
 	return out
 }
+
+func missingNumber(nums []int) int {
+	var found = len(nums)
+	for i := 0; i < len(nums); i++ {
+		found ^= i
+		found ^= nums[i]
+	}
+	return found
+}
