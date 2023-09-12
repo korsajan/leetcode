@@ -21,3 +21,20 @@ func TestHammingWeight(t *testing.T) {
 		}
 	}
 }
+
+func TestCountBits(t *testing.T) {
+	var tableTest = []struct {
+		num int
+		out []int
+	}{
+		{num: 2, out: []int{0, 1, 1}},
+		{num: 5, out: []int{0, 1, 1, 2, 1, 2}},
+	}
+
+	for i, test := range tableTest {
+		res := countBits(test.num)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}
