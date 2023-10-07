@@ -56,3 +56,28 @@ func TestMissingNumber(t *testing.T) {
 		}
 	}
 }
+
+func TestGetSum(t *testing.T) {
+	var tableTest = []struct {
+		a, b int
+		out  int
+	}{
+		{
+			a:   1,
+			b:   2,
+			out: 3,
+		},
+		{
+			a:   2,
+			b:   3,
+			out: 5,
+		},
+	}
+
+	for i, test := range tableTest {
+		res := getSum(test.a, test.b)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}
