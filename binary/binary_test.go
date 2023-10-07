@@ -81,3 +81,18 @@ func TestGetSum(t *testing.T) {
 		}
 	}
 }
+
+func TestReversesBits(t *testing.T){
+	var tableTest = []struct {
+		num,out  uint32
+	}{
+		{num: 43261596, out: 964176192},
+		{num: 4294967293, out: 3221225471},
+	}
+	for i, test := range tableTest {
+		res := reverseBits(test.num)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}

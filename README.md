@@ -1,6 +1,6 @@
 # blind 75 leetcode list
 - [ ] [Array](./array)
-- [ ] [Binary](./binary)
+- [x] [Binary](./binary)
 - [ ] [Dynamic Programming](./dp)
 - [ ] [Graph](./graph)
 - [ ] [Interval](./interval)

@@ -36,3 +36,17 @@ func getSum(a int, b int) int {
 	}
 	return a
 }
+
+func reverseBits(num uint32) uint32 {
+	pos := 32 - 1
+	var reverse = uint32(0)
+	for pos >= 0 && num != 0 {
+		if num&1 == 1 {
+			reverse = reverse | (1 << pos)
+		}
+		num >>= 1
+		pos--
+	}
+
+	return reverse
+}
