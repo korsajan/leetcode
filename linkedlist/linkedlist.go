@@ -16,6 +16,19 @@ func ReverseList(head *ListNode) *ListNode {
 	return prev
 }
 
+func HasCycle(head *ListNode) bool {
+	seen := make(map[*ListNode]bool)
+
+	first := head
+	for n := first; n != nil; n = n.Next {
+		if seen[n] {
+			return true
+		}
+		seen[n] = true
+	}
+	return false
+}
+
 func SliceToList(arr ...int) *ListNode {
 	var node *ListNode
 	for i := 0; i < len(arr); i++ {
