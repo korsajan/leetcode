@@ -21,3 +21,19 @@ func TestLengthOfLongestSubstring(t *testing.T) {
 		}
 	}
 }
+
+func TestIsAnagram(t *testing.T) {
+	var tests = []struct {
+		s, t string
+		out  bool
+	}{
+		{s: "anagram", t: "nagaram", out: true},
+		{s: "rat", t: "car", out: false},
+	}
+	for i, test := range tests[1:] {
+		res := isAnagram(test.s, test.t)
+		if !reflect.DeepEqual(test.out, res) {
+			t.Errorf("test %d failed ex: %v got: %v\n", i+1, test.out, res)
+		}
+	}
+}
