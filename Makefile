@@ -1,9 +1,7 @@
 
-.PHONY: array binary string
-.PHONY: array binary linkedlist
+.PHONY: array binary string linkedlist
 
-all: array binary string
-all: array binary linkedlist
+all: array binary string linkedlist
 
 array:
 	go test -cover ./array -v
