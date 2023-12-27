@@ -33,3 +33,54 @@ func TestMaxDepth(t *testing.T) {
 		}
 	}
 }
+
+func TestIsSameTree(t *testing.T) {
+	var testCases = []struct {
+		p, q *TreeNode
+		out  bool
+	}{
+		{
+			p: &TreeNode{
+				Val:   1,
+				Left:  &TreeNode{Val: 2},
+				Right: &TreeNode{Val: 3},
+			},
+			q: &TreeNode{
+				Val:   1,
+				Left:  &TreeNode{Val: 2},
+				Right: &TreeNode{Val: 3},
+			},
+			out: true,
+		},
+		{
+			p: &TreeNode{
+				Val:  1,
+				Left: &TreeNode{Val: 2},
+			},
+			q: &TreeNode{
+				Val:   1,
+				Right: &TreeNode{Val: 2},
+			},
+			out: false,
+		},
+		{
+			p: &TreeNode{
+				Val:   1,
+				Left:  &TreeNode{Val: 2},
+				Right: &TreeNode{Val: 1},
+			},
+			q: &TreeNode{
+				Val:   1,
+				Left:  &TreeNode{Val: 1},
+				Right: &TreeNode{Val: 2},
+			},
+			out: false,
+		},
+	}
+
+	for i, test := range testCases {
+		if same := isSameTree(test.p, test.q); same != test.out {
+			t.Errorf("test %d failed got: %t want: %t", i+1, test.out, same)
+		}
+	}
+}

@@ -1,7 +1,7 @@
 
-.PHONY: array binary string linkedlist calculator
+.PHONY: array binary string linkedlist calculator tree
 
-all: array binary string linkedlist calculator
+all: array binary string linkedlist calculator tree
 
 array:
 	go test -cover ./array -v
@@ -17,3 +17,6 @@ linkedlist:
 
 string:
 	go test -cover ./string -v
+
+tree:
+	go test -cover ./tree -v
